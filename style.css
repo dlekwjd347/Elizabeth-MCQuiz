@@ -22,6 +22,11 @@ h1 {
     font-family: 'Quantico', sans-serif;
 }
 
+.animate__animated.animate__bounceIn {
+    --animate-duration: 5s;
+  }
+
+
 p {
     font-size: 20px;
     font-family: 'Quantico', sans-serif;
@@ -54,3 +59,4 @@ p {
         background:linear-gradient(to bottom, #5cb811 5%, #77d42a 100%);
         background-color:#5cb811;
     }
+
