@@ -1,31 +1,40 @@
-p.setAttribute("class", "animate__animated animate__zoomInDown animate__infinite");
-
-var questions = [
-    {
-        prompt: "Knowing correct grammar will help you write ________.\n(a) good\n(b) well\n (c) goodly\n(d)clear",
-        answer: "b"
-    }
-
-
-
-
-
-
-
-
-]
-
 var score = 0;
+var questionsEl = document.querySelector("questions");
+var startBtn = document.getElementById("start");
 
-for (var i = 0; i < questions.length; i++) {
-    var response = window.prompt()
+function startButton() {
+    var startscreenEl = document.querySelector(".start-screen");
+    //when start button is clicked, hide start screen
+    startscreenEl.setAttribute("style", "display: none;");
 
-    if (response === questions[i].answer) {
-        score++;
-    }
+    //un-hide questions
+    // questionsEl.removeAttribute("class");
 
-    else {
-        timer--;
-
-    }
 }
+
+document.addEventListener("click", function (event) {
+    if (event.target.matches("#start")) {
+        startButton()
+
+    }
+
+
+    //stops function to end it (retire function)
+    return
+})
+
+
+
+
+// for (var i = 0; i < questions.length; i++) {
+//     var response = 
+
+//     if (response === questions[i].answer) {
+//         score++;
+//     }
+
+//     else {
+//         timer--;
+
+//     }
+// }
