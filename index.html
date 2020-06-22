@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src = "script.js"></script>
+   
     <link rel="stylesheet" href="style.css" />
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Quantico&display=swap" rel="stylesheet">
     <link
@@ -13,11 +13,14 @@
     <title>Liz's Grammar Quiz</title>
 </head>
 <body>
-    <div class="start-screen">
+    <section>
         <h3 class="score"><a href="scores.html">Score: </a></h3>
-        <h3 class="timeLeft">Time Remaining: 50 seconds</h3>
-        <h1 class = "animate__animated animate__bounceIn animate__infinite">Grammar Quiz Challenge</h1>
-        <p>This quick quiz will test your basic grammar skills. <br> Try to answer the questions within the time limit. <br>Keep
+        <h3 class="timeLeft"></h3>
+    </section>
+    
+    <div class="start-screen">
+        <h1 class = "intro" class = "animate__animated animate__bounceIn animate__infinite">Grammar Quiz Challenge</h1>
+        <p class = "intro">This quick quiz will test your basic grammar skills. <br> Try to answer the questions within the time limit. <br>Keep
             in mind that incorrect answers will penalize your score/time by five seconds!</p>
             <button id="start">Start Quiz</button>
     </div> 
@@ -29,7 +32,7 @@
 
 
     </div>
-
+    <script src = "script.js"></script>
 
 </body>
 
