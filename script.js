@@ -3,19 +3,14 @@ var timeEl = document.querySelector(".timeLeft");
 var questionsEl = document.querySelector("questions");
 var startBtn = document.getElementById("start");
 
-var secondsLeft = 50;
+var secondsLeft = 76;
 
 function startButton() {
-    var startscreenEl = document.querySelector(".start-screen");
-    //when start button is clicked, hide start screen
-    startscreenEl.setAttribute("style", "display: none;");
+    var mainscreenEl = document.querySelector(".main-screen");
+    //when start button is clicked, hide main screen
+    mainscreenEl.setAttribute("style", "display: none;");
     //when start button is clicked, timer starts
-    
-    // setTimeout(function(){
-    //     initializeQuestion();
-        
-    // }, 1000);
-
+    // initializeQuestion()
 }
 
 function setTime() {
@@ -25,28 +20,27 @@ function setTime() {
         // score.textContent= "";
         if(secondsLeft === 0) {
             clearInterval(timerInterval);
-            // alert("Time's up!")
+            alert("Time's up!")
         }
     }, 1000);
+}
+
+function initializeQuestion() {
+    var currentQuestion = document.querySelector(".questions");
+    currentQuestion.textContent = "Test"
+
 }
 
 document.addEventListener("click", function (event) {
     if (event.target.matches("#start")) {
         startButton();
+        initializeQuestion();
         setTime();
+        
     }
     //stops function to end it (retire function)
     return
 })
-
-function initializeQuestion() {
-
-
-
-}
-
-
-
 
 
 
