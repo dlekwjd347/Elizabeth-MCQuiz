@@ -1,7 +1,8 @@
 var score = 0;
 var timeEl = document.querySelector(".timeLeft");
-var questionsEl = document.querySelector("questions");
 var startBtn = document.getElementById("start");
+var questionsEl = document.getElementById(".questionList");
+var currentQuestionIndex = 0;
 
 var secondsLeft = 76;
 
@@ -10,7 +11,9 @@ function startButton() {
     //when start button is clicked, hide main screen
     mainscreenEl.setAttribute("style", "display: none;");
     //when start button is clicked, timer starts
-    // initializeQuestion()
+    questionsEl.style.visibility = "hidden"
+    initializeQuestion()
+    // questionsEl.setAttribute("style", "display: block;");
 }
 
 function setTime() {
@@ -20,27 +23,34 @@ function setTime() {
         // score.textContent= "";
         if(secondsLeft === 0) {
             clearInterval(timerInterval);
-            alert("Time's up!")
+            alert("Time's up!");
         }
     }, 1000);
 }
 
 function initializeQuestion() {
-    var currentQuestion = document.querySelector(".questions");
-    currentQuestion.textContent = "Test"
+    // var currentQuestion = questionList[currentQuestionIndex];
+    // var questionEl = document.getElementById("question-title");
+    // questionEl.textContent = currentQuestion.title;
+
+    // var currentAnswer = questionList[currentAnswerIndex];
+    // var answerEl = document.getElementById("choices");
+    // answerEl.textContent = currentAnswer.questionList.choices;
+    questionsEl.style.visibility = "visible"
+
+
 
 }
 
 document.addEventListener("click", function (event) {
     if (event.target.matches("#start")) {
         startButton();
-        initializeQuestion();
         setTime();
         
     }
     //stops function to end it (retire function)
-    return
-})
+    return;
+});
 
 
 
