@@ -25,16 +25,28 @@
             <button id="start">Start Quiz</button>
     </div> 
     <div class = "questions" id = "questionList">
-        <h4 id="question-title"></h4>
-        <div id="choices" class="choices"></div>
+        <div id="choices" class="choices">
+        <!--radio buttons-->
+        <form id="QandA" class="hide">
+            <h4 id="question-title"></h4>
+            <input type="radio" class = "choice" id="ans1" name = "choice" value="ansA">
+            <label id="questionList.choices(a)" for="ansA"></label><br>
+            <input type="radio" class = "choice" id="ans2" name = "choice" value="ansB">
+            <label id="questionList.choices(b)" for="ansB"></label><br>
+            <input type="radio" class = "choice" id="ans3" name = "choice" value="ansC">
+            <label id="questionList.choices(c)" for="ansC"></label><br>
+            <input type="radio" class = "choice" id="ans4" name = "choice" value="ansD">
+            <label id="questionList.choices(d)" for="ansD"></label><br>
+          </form>
+        </div>
     </div>
     <div class = "end-screen">
 
 
 
     </div>
-    <script src = "script.js" ></script>
-    <script src = "questions.js" ></script>
+    <script src="script.js"></script>
+    <script src="questions.js"></script>
 </body>
 
 </html>

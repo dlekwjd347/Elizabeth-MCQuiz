@@ -2,14 +2,25 @@
 var questionList = [
     {
         title: "Knowing correct grammar will help you write ________.",
-        choices: ["good", "well", "goodly", "clear"],
-        answer: "well"
+        choices: {
+            a: "good", 
+            b: "well", 
+            c: "goodly", 
+            d: "clear",
+        
     },
+    answer: "a"
+},
     {
         title: "This matter is strictly between ________",
-        choices: ["her and me", "she and I", "her and I", "she and me"],
+        choices: {
+            a: "her and me", 
+            b: "she and I", 
+            c: "her and I", 
+            d: "she and me",
         answer: "her and me"
     },
+},
     {
         title: "She sings better _____ I do",
         choices: ["then", "than"],

@@ -59,3 +59,14 @@ p, .questions {
         background-color:#5cb811;
     }
 
+.hide {
+    display: none;
+}
+
+input[type="radio"]  {
+    vertical-align: middle;
+}
+
+  
+       
+  
