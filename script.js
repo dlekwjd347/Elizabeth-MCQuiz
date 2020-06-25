@@ -44,16 +44,29 @@ function initializeQuestion() {
     answerC.textContent = questionList[0].choices.c;
     answerD.textContent = questionList[0].choices.d;
 
-    for (var i = 0; i < questionList.length; i++) {
+    //go through questions 
+    //for (var i = 0; i < questionList.length; i++) {
         //need if statement, user input response variable 
-        var userClick = document.querySelector(".choice");
+
+    //compare answers 
+        var userChoice = event.target;
         if (userClick === questionList[i].choices.answer) {
             score.textContent+=1;
         }
         else {
             secondsLeft-10;
         }
+        // var userChoice = ($(event.target).val());
+        // // Compare the computer and user guess
+        // if(computerChoice === userChoice) {
+        //   //get result id for result element on html
+        //   $("#result").text("you are correct.");
 
+        // }
+
+        // else {
+        //   $("#result").text("you are wrong");
+        // }
 
         //need else statement, if user input is not the answer chosen
 
