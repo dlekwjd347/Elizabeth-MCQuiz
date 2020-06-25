@@ -1,4 +1,4 @@
-var score = document.querySelector(".score");
+var scoreEl = document.querySelector(".score");
 var timeEl = document.querySelector(".timeLeft");
 var startBtn = document.getElementById("start");
 var questionsEl = document.getElementById("#questionList");
@@ -10,6 +10,9 @@ var answerA = document.getElementById("questionList.choices(a)");
 var answerB = document.getElementById("questionList.choices(b)");
 var answerC = document.getElementById("questionList.choices(c)");
 var answerD = document.getElementById("questionList.choices(d)");
+;
+
+var score = 0;
 
 var secondsLeft = 76;
 
@@ -38,24 +41,19 @@ function initializeQuestion() {
     var questionListText = document.createTextNode(questionList[0].title);
     questionListPara.appendChild(questionListText);
     console.log(questionListText);
-
+    // scoreEl.textContent ="Score: " + score;
     answerA.textContent = questionList[0].choices.a;
     answerB.textContent = questionList[0].choices.b;
     answerC.textContent = questionList[0].choices.c;
     answerD.textContent = questionList[0].choices.d;
 
+    answerA.value=questionList[0].choices.a;
+
     //go through questions 
     //for (var i = 0; i < questionList.length; i++) {
         //need if statement, user input response variable 
+        
 
-    //compare answers 
-        var userChoice = event.target;
-        if (userClick === questionList[i].choices.answer) {
-            score.textContent+=1;
-        }
-        else {
-            secondsLeft-10;
-        }
         // var userChoice = ($(event.target).val());
         // // Compare the computer and user guess
         // if(computerChoice === userChoice) {
@@ -69,22 +67,37 @@ function initializeQuestion() {
         // }
 
         //need else statement, if user input is not the answer chosen
+        
+        compareChoice()
 
     };
-}
+
+var userChoice = document.querySelector("#QandA");    
+userChoice.addEventListener("click", compareChoice);
+
+function compareChoice() {
+    var choice = userChoice.target.value;
+        
+    if (choice === questionList[0].answerA) {
+        score+=1;
+        scoreEl.textContent ="Score: " + score;
+    }
+    else {
+        secondsLeft-=10;
+    }
+};
 
 
 
-
-document.addEventListener("click", function (event) {
-    if (event.target.matches("#start")) {
+startBtn.addEventListener("click", function (event) {
+    // if (event.target.matches("#start")) {
         startButton();
         setTime();
         initializeQuestion()
         
-    }
+    
     //stops function to end it (retire function)
-    return;
+    // return;
 });
 
 
