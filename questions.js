@@ -3,20 +3,20 @@ var questionList = [
     {
         title: "What Pokemon does Pikachu evolve into?",
         choices: {
-            "a": "Jolteon", 
-            "b": "Meowstic", 
-            "c": "Raichu", 
-            "d": "Electivire"
+            a: "Jolteon", 
+            b: "Meowstic", 
+            c: "Raichu", 
+            d: "Electivire"
         },
         correct: "c"
     },
     {
-        title: "This matter is strictly between ________",
+        title: "With a special item called the Metal Coat, what does Onix evolve into?",
         choices: {
-            a: "her and me", 
-            b: "she and I", 
-            c: "her and I", 
-            d: "she and me"
+            a: "Registeel", 
+            b: "Steelix", 
+            c: "Rockruff", 
+            d: "Stonix"
         },
         correct: "b"
     },

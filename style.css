@@ -1,11 +1,13 @@
 body {
-    background-image: url(./ninetails.jpg);
-    margin-bottom: 0px;
+    background-image: url(./pikachu.jpg); 
+    /* position: fixed;  */
+    top: 0; 
+    left: 0;
     
 }
 
 h3, h1, p, .questions {
-    background-color: white;
+    /* background-color: white; */
     text-align: center;
     margin-top: 60px;   
 
@@ -64,10 +66,10 @@ p, .questions {
 .hide {
     display: none;
 }
-
+/* 
 input[type="radio"]  {
     vertical-align: middle;
-}
+} */
 
   
        
