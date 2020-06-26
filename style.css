@@ -1,5 +1,7 @@
 body {
-    background-image: url(./Background.JPG);
+    background-image: url(./ninetails.jpg);
+    margin-bottom: 0px;
+    
 }
 
 h3, h1, p, .questions {
@@ -21,8 +23,8 @@ h1 {
     font-family: 'Quantico', sans-serif;
 }
 
-.animate__animated.animate__bounceIn {
-    --animate-duration: 5s;
+.animate__animated {
+    --animate-duration: 4s;
   }
 
 

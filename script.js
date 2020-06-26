@@ -1,18 +1,27 @@
-var scoreEl = document.querySelector(".score");
+var scoreEl = document.querySelector("#score");
 var timeEl = document.querySelector(".timeLeft");
 var startBtn = document.getElementById("start");
-var questionsEl = document.getElementById("#questionList");
+
 var questionListPara = document.querySelector("#question-title");
 var questionListChoice = document.querySelector("#choices");
-var qandaform = document.querySelector("#QandA");
+
 var currentQuestionIndex = 0;
+var qandaform = document.querySelector("#QandA");
+var questionsEl = document.getElementById("#questionList");
+//to display
 var answerA = document.getElementById("questionList.choices(a)");
 var answerB = document.getElementById("questionList.choices(b)");
 var answerC = document.getElementById("questionList.choices(c)");
 var answerD = document.getElementById("questionList.choices(d)");
-;
 
-var score = 0;
+var choiceA = document.querySelector("#ans1");
+var choiceB = document.querySelector("#ans2");
+var choiceC = document.querySelector("#ans3");
+var choiceD = document.querySelector("#ans4");
+
+// console.log(questionList.choices.a);
+
+var questionIndex = 0;
 
 var secondsLeft = 76;
 
@@ -35,54 +44,47 @@ function setTime() {
         }
     }, 1000);
 }
-
  
 function initializeQuestion() {
     var questionListText = document.createTextNode(questionList[0].title);
     questionListPara.appendChild(questionListText);
-    console.log(questionListText);
+    // console.log(questionListText);
     // scoreEl.textContent ="Score: " + score;
     answerA.textContent = questionList[0].choices.a;
     answerB.textContent = questionList[0].choices.b;
     answerC.textContent = questionList[0].choices.c;
     answerD.textContent = questionList[0].choices.d;
-
-    answerA.value=questionList[0].choices.a;
-
+    choiceA.setAttribute("data-question", questionIndex);
+    choiceB.setAttribute("data-question", questionIndex);
+    choiceC.setAttribute("data-question", questionIndex);
+    choiceD.setAttribute("data-question", questionIndex);
     //go through questions 
     //for (var i = 0; i < questionList.length; i++) {
         //need if statement, user input response variable 
         
-
-        // var userChoice = ($(event.target).val());
-        // // Compare the computer and user guess
-        // if(computerChoice === userChoice) {
-        //   //get result id for result element on html
-        //   $("#result").text("you are correct.");
-
-        // }
-
-        // else {
-        //   $("#result").text("you are wrong");
-        // }
-
-        //need else statement, if user input is not the answer chosen
-        
-        compareChoice()
-
     };
+    
 
-var userChoice = document.querySelector("#QandA");    
-userChoice.addEventListener("click", compareChoice);
+// var userChoice = document.querySelector("#QandA");    
+// userChoice.addEventListener("click", compareChoice);
 
-function compareChoice() {
-    var choice = userChoice.target.value;
-        
-    if (choice === questionList[0].answerA) {
+function compareChoice(event) {
+    var button = event.value;
+    var userChoice = button.getAttribute("data-answer");
+    var questionId = parseInt(button.getAttribute("data-question"));
+    console.log(button);
+    console.log(userAnswer);
+    console.log(questionId);
+    questionList[questionId]["userChoice"] = userChoice;
+    if (questionList[questionId]["userChoice"] === questionList[questionId]["answer"]) {
         score+=1;
-        scoreEl.textContent ="Score: " + score;
+        scoreEl.innerHTML ="Score: " + score;
+        console.log("choice" + choice) //string of choice, and variable choice
+        console.log("questionList" + questionList[0].choices.b)
+     
     }
     else {
+        scoreEl.innerHTML ="Score: ";
         secondsLeft-=10;
     }
 };
@@ -94,11 +96,17 @@ startBtn.addEventListener("click", function (event) {
         startButton();
         setTime();
         initializeQuestion()
+        compareChoice()
         
     
     //stops function to end it (retire function)
     // return;
 });
+choiceA.addEventListener("click", compareChoice);
+choiceB.addEventListener("click", compareChoice);
+choiceC.addEventListener("click", compareChoice);
+choiceD.addEventListener("click", compareChoice);
+
 
 
 

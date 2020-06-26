@@ -8,34 +8,32 @@
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Quantico&display=swap" rel="stylesheet">
     <link
     rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"
-  />
-    <title>Liz's Grammar Quiz</title>
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
+    <title>Liz's Pokemon Quiz</title>
 </head>
 <body>
     <section>
-        <h3 class="score"><a href="scores.html">Score: </a></h3>
+        <h3 id="score"><a href="scores.html"></a></h3>
         <h3 class="timeLeft"></h3>
     </section>
     
     <div class="main-screen">
-        <h1 class = "intro" class = "animate__animated animate__bounceIn animate__infinite">Grammar Quiz Challenge</h1>
-        <p class = "intro">This quick quiz will test your basic grammar skills. <br> Try to answer the questions within the time limit. <br>Keep
-            in mind that incorrect answers will penalize your score/time by five seconds!</p>
+        <h1 class = "intro animate__animated animate__bounceIn animate__infinite">Pokemon Quiz</h1>
+        <p class = "intro">This quick quiz will test your basic Pokemon knowledge. <br> Try to answer the questions within the time limit. <br>Keep in mind that incorrect answers will penalize your score/time by five seconds!</p>
             <button id="start">Start Quiz</button>
     </div> 
     <div class = "questions" id = "questionList">
         <div id="choices" class="choices">
         <!--radio buttons-->
         <form id="QandA" class="hide">
-            <h4 id="question-title"></h4>
-            <input type="radio" class = "choice" id="ans1" name = "choice" value="ansA">
+            <h4 id="question-title" data-question =""></h4>
+            <input type="radio" class = "choice" id="ans1" name = "choice" data-answer="">
             <label id="questionList.choices(a)" for="ansA"></label><br>
-            <input type="radio" class = "choice" id="ans2" name = "choice" value="ansB">
+            <input type="radio" class = "choice" id="ans2" name = "choice" data-answer="">
             <label id="questionList.choices(b)" for="ansB"></label><br>
-            <input type="radio" class = "choice" id="ans3" name = "choice" value="ansC">
+            <input type="radio" class = "choice" id="ans3" name = "choice" data-answer="">
             <label id="questionList.choices(c)" for="ansC"></label><br>
-            <input type="radio" class = "choice" id="ans4" name = "choice" value="ansD">
+            <input type="radio" class = "choice" id="ans4" name = "choice" data-answer="">
             <label id="questionList.choices(d)" for="ansD"></label><br>
           </form>
         </div>
