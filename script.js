@@ -7,22 +7,24 @@ var questionListChoice = document.querySelector("#choices");
 
 var currentQuestionIndex = 0;
 var qandaform = document.querySelector("#QandA");
-var questionsEl = document.getElementById("#questionList");
+var questionsEl = document.querySelector("#questionList");
 //to display
-var answerA = document.getElementById("questionList.choices(a)");
-var answerB = document.getElementById("questionList.choices(b)");
-var answerC = document.getElementById("questionList.choices(c)");
-var answerD = document.getElementById("questionList.choices(d)");
+var labelA = document.getElementById("labelA");
+var labelB = document.getElementById("labelB");
+var labelC = document.getElementById("labelC");
+var labelD = document.getElementById("labelD");
 
 var choiceA = document.querySelector("#ans1");
 var choiceB = document.querySelector("#ans2");
 var choiceC = document.querySelector("#ans3");
 var choiceD = document.querySelector("#ans4");
 
+var userChoice = "";
+var correctAnswer ="";
 // console.log(questionList.choices.a);
 
 var questionIndex = 0;
-
+var score = 0;
 var secondsLeft = 76;
 
 function startButton() {
@@ -46,49 +48,54 @@ function setTime() {
 }
  
 function initializeQuestion() {
-    var questionListText = document.createTextNode(questionList[0].title);
-    questionListPara.appendChild(questionListText);
+    var thisQuestion = questionList[currentQuestionIndex];
+    // var questionListText = document.createTextNode(thisQuestion.title);
+    questionListPara.innerHTML = thisQuestion.title;
     // console.log(questionListText);
     // scoreEl.textContent ="Score: " + score;
-    answerA.textContent = questionList[0].choices.a;
-    answerB.textContent = questionList[0].choices.b;
-    answerC.textContent = questionList[0].choices.c;
-    answerD.textContent = questionList[0].choices.d;
-    choiceA.setAttribute("data-question", questionIndex);
-    choiceB.setAttribute("data-question", questionIndex);
-    choiceC.setAttribute("data-question", questionIndex);
-    choiceD.setAttribute("data-question", questionIndex);
+    labelA.textContent = thisQuestion.choices.a;
+    labelB.textContent = thisQuestion.choices.b;
+    labelC.textContent = thisQuestion.choices.c;
+    labelD.textContent = thisQuestion.choices.d;
+
+    correctAnswer =  thisQuestion.correct;
     //go through questions 
     //for (var i = 0; i < questionList.length; i++) {
         //need if statement, user input response variable 
         
-    };
+};
     
 
 // var userChoice = document.querySelector("#QandA");    
 // userChoice.addEventListener("click", compareChoice);
 
 function compareChoice(event) {
-    var button = event.value;
-    var userChoice = button.getAttribute("data-answer");
-    var questionId = parseInt(button.getAttribute("data-question"));
-    console.log(button);
-    console.log(userAnswer);
-    console.log(questionId);
-    questionList[questionId]["userChoice"] = userChoice;
-    if (questionList[questionId]["userChoice"] === questionList[questionId]["answer"]) {
+    var button = event.target;
+    userChoice = button.dataset.answer;
+    onSubmit();
+};
+
+function onSubmit(){
+    if (userChoice === correctAnswer) {
         score+=1;
         scoreEl.innerHTML ="Score: " + score;
-        console.log("choice" + choice) //string of choice, and variable choice
-        console.log("questionList" + questionList[0].choices.b)
+        // console.log("choice" + choice) //string of choice, and variable choice
+        // console.log("questionList" + questionList[0].choices.b)
      
     }
     else {
-        scoreEl.innerHTML ="Score: ";
+        scoreEl.innerHTML ="Score: " + score;
         secondsLeft-=10;
     }
-};
 
+
+    currentQuestionIndex++;
+    if (currentQuestionIndex < questionList.length){
+        initializeQuestion();
+    }else {
+        //end game
+    }
+}
 
 
 startBtn.addEventListener("click", function (event) {
@@ -96,12 +103,12 @@ startBtn.addEventListener("click", function (event) {
         startButton();
         setTime();
         initializeQuestion()
-        compareChoice()
-        
     
     //stops function to end it (retire function)
     // return;
 });
+
+
 choiceA.addEventListener("click", compareChoice);
 choiceB.addEventListener("click", compareChoice);
 choiceC.addEventListener("click", compareChoice);

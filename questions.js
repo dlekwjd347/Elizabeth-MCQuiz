@@ -6,22 +6,20 @@ var questionList = [
             "a": "Jolteon", 
             "b": "Meowstic", 
             "c": "Raichu", 
-            "d": "Electivire",
-            "answer": "Raichu"
-        
+            "d": "Electivire"
+        },
+        correct: "c"
     },
-    
-},
-//     {
-//         title: "This matter is strictly between ________",
-//         choices: {
-//             a: "her and me", 
-//             b: "she and I", 
-//             c: "her and I", 
-//             d: "she and me",
-//         answer: "her and me"
-//     },
-// },
+    {
+        title: "This matter is strictly between ________",
+        choices: {
+            a: "her and me", 
+            b: "she and I", 
+            c: "her and I", 
+            d: "she and me"
+        },
+        correct: "b"
+    },
 //     {
 //         title: "She sings better _____ I do",
 //         choices: ["then", "than"],
