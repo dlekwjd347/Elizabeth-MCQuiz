@@ -16,6 +16,8 @@ var choiceA = document.querySelector("#ans1");
 var choiceB = document.querySelector("#ans2");
 var choiceC = document.querySelector("#ans3");
 var choiceD = document.querySelector("#ans4");
+//display result of answer choice 
+var result = document.querySelector(".result");
 
 //sent question index to 0 so it can be incremented later
 var currentQuestionIndex = 0;
@@ -35,6 +37,7 @@ function startButton() {
     //when start button is clicked, hide main screen
     mainscreenEl.setAttribute("style", "display: none;");
     //the radio buttons form is hidden at first, and this function removes the "hide" class
+    
     qandaform.removeAttribute("class");
      
 }
@@ -67,6 +70,11 @@ function initializeQuestion() {
 
     //sets the correct answer to each question's "correct" object value
     correctAnswer =  thisQuestion.correct;
+    result.textContent = ("")
+    // clears previous radio button choice for next question
+    var choiceEl = document.getElementsByName("choice")
+    for (var i = 0; i <choiceEl.length; i++)
+    choiceEl[i].checked = false;
         
 };
 
@@ -79,17 +87,25 @@ function setChoice(event) {
 
 //validate's user's choice 
 function validate (){
+    
     if (userChoice === correctAnswer) {
+        
         //if user's choice is equal to the correct answer of this question, the score will increase by 1 point. 
         score+=1;
         scoreEl.innerHTML ="Score: " + score;
-         }
+        result.textContent = "You're correct!"
+    }
+        
     else {
         //if user's choice is not equal to the correct answer of this question, the score will not change, instead the seconds will decrease by 5
         scoreEl.innerHTML ="Score: " + score;
         secondsLeft-=5;
+        result.textContent = "Sorry, not that one!"
+        
     }
+    setTimeout(function(){
     //this ensures the function will go through the index of the question list in increments
+
     currentQuestionIndex++;
     if (currentQuestionIndex < questionList.length){
         initializeQuestion();
@@ -97,7 +113,10 @@ function validate (){
     }else {
         //end game
     }
-}
+},
+    3000);
+         };
+        
 
 //this button is linked to the "Start Quiz" button and will call functions below 
 startBtn.addEventListener("click", function (event) {
