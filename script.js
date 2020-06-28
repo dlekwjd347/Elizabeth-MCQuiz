@@ -18,6 +18,14 @@ var choiceC = document.querySelector("#ans3");
 var choiceD = document.querySelector("#ans4");
 //display result of answer choice 
 var result = document.querySelector(".result");
+//display end screen for final score and record high scores
+var endScreen = document.querySelector("#end-screen");
+//display form box to enter initials to save score
+var initialsEl = document.getElementById("enterInitials");
+//create variable for submit button
+var submitBtn = document.getElementById("submit");
+//get intials user puts in 
+var initialsinput = document.getElementById("initials");
 
 //sent question index to 0 so it can be incremented later
 var currentQuestionIndex = 0;
@@ -57,6 +65,7 @@ function setTime() {
 
 //function to set up questions
 function initializeQuestion() {
+    
     //the new variable set here grabs the index of the questions list 
     var thisQuestion = questionList[currentQuestionIndex];
     //in index.html, the question title will be displayed in the questionList id div element
@@ -70,12 +79,13 @@ function initializeQuestion() {
 
     //sets the correct answer to each question's "correct" object value
     correctAnswer =  thisQuestion.correct;
-    result.textContent = ("")
+    result.textContent = ("");
+    endScreen.textContent = ("");
     // clears previous radio button choice for next question
     var choiceEl = document.getElementsByName("choice")
     for (var i = 0; i <choiceEl.length; i++)
     choiceEl[i].checked = false;
-        
+    
 };
 
 //user choice is set to button events and will call the validate function
@@ -100,7 +110,7 @@ function validate (){
         //if user's choice is not equal to the correct answer of this question, the score will not change, instead the seconds will decrease by 5
         scoreEl.innerHTML ="Score: " + score;
         secondsLeft-=5;
-        result.textContent = "Sorry, not that one!"
+        result.textContent = "Sorry, not that one! Time decreased by 5 seconds!"
         
     }
     setTimeout(function(){
@@ -111,12 +121,55 @@ function validate (){
         initializeQuestion();
     //once the last question is done, the game will end 
     }else {
-        //end game
+        endgame();
     }
 },
-    3000);
+    2000);
          };
         
+//end game function when timer is 0 or user answered all questions 
+function endgame () {
+    qandaform.setAttribute("style", "display: none;");
+    questionsEl.setAttribute("style", "display: none;");
+    result.setAttribute("style", "display: none;");
+    timeEl.setAttribute("style", "display: none;");
+    // secondsLeft = 0;
+
+    //message for completing quiz: score 
+    endScreen.textContent ="Your score is: " + score;
+    initialsEl.removeAttribute("class");
+    
+}
+//save to local storage
+function saveScore () {
+    var initials = initialsinput.value;
+    console.log(initials);
+    //make sure no blank intial submission
+    if (initials !== "") {
+    
+       var highscores = JSON.parse(window.localStorage.getItem("scores")) || [];
+        //user input storage format 
+       var newScore = {
+        score: score,
+        initials: initials
+      };
+      
+      //appending new scores to array of high scores
+    highscores.push(newScore);
+    //add high scores to local storage
+    window.localStorage.setItem("scores", JSON.stringify(highscores));
+      //change url to scores page
+    window.location.href = "scores.html";
+      
+
+   }
+}
+
+
+//look at scores option 
+
+
+
 
 //this button is linked to the "Start Quiz" button and will call functions below 
 startBtn.addEventListener("click", function (event) {
@@ -125,6 +178,12 @@ startBtn.addEventListener("click", function (event) {
         initializeQuestion()
 
 });
+
+submitBtn.addEventListener("click", function (event) {
+    saveScore()
+}
+    //go to high score screen
+
 
 //adds event listener to each choice at a click and in each instance, will call the setChoice function 
 choiceA.addEventListener("click", setChoice);

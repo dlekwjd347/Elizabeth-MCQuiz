@@ -13,7 +13,8 @@
 </head>
 <body>
     <section>
-        <h3 id="score"><a href="scores.html"></a></h3>
+        <h4 class = "highscore"><a href="scores.html">View scores</a></h4>
+        <h3 id="score"></h3>
         <h3 class="timeLeft"></h3>
     </section>
     
@@ -42,10 +43,13 @@
         <p></p>
     </div>
     <div class = "end-screen">
-
-
-
+        <h3 id = "end-screen"></h3>
+        <p id = "enterInitials" class="hide">
+            Enter initials: <input type="text" id="initials" max="3" />
+            <button id="submit">Submit</button>
+          </p>
     </div>
+   
     <script src="script.js"></script>
     <script src="questions.js"></script>
 </body>
