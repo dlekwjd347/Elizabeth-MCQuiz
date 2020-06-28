@@ -23,13 +23,19 @@ h1 {
     font-size: 40px;
     font-family: 'Quantico', sans-serif;
 }
+h2, #highscores {
+    font-family: 'Quantico', sans-serif;
+    font-size: 25px;
+    color: white;
 
+
+}
 .animate__animated {
     --animate-duration: 4s;
   }
 
 
-p, .questions, .result, .end-screen, .highscore {
+p, .questions, .result, .end-screen, .highscore  {
     font-size: 20px;
     font-family: 'Quantico', sans-serif;
 }
@@ -74,7 +80,8 @@ input[type="radio"]  {
        
 .scorebody {
     background-image: url(./mewtwo.JPG); 
-    /* margin-left: 10px; */
+    margin-left: 130px;
+    margin-top: 80px;
 }
 
 #mainpagebtn {
@@ -128,3 +135,4 @@ input[type="radio"]  {
 	position:relative;
 	top:1px;
 }
+
