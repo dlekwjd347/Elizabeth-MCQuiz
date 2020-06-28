@@ -124,7 +124,7 @@ function validate (){
         endgame();
     }
 },
-    2000);
+    4000);
          };
         
 //end game function when timer is 0 or user answered all questions 
@@ -142,8 +142,8 @@ function endgame () {
 }
 //save to local storage
 function saveScore () {
-    var initials = initialsinput.value;
-    console.log(initials);
+    var initials = initialsinput.value.trim();
+    // console.log(initials);
     //make sure no blank intial submission
     if (initials !== "") {
     
@@ -160,15 +160,9 @@ function saveScore () {
     window.localStorage.setItem("scores", JSON.stringify(highscores));
       //change url to scores page
     window.location.href = "scores.html";
-      
 
    }
 }
-
-
-//look at scores option 
-
-
 
 
 //this button is linked to the "Start Quiz" button and will call functions below 
@@ -181,7 +175,7 @@ startBtn.addEventListener("click", function (event) {
 
 submitBtn.addEventListener("click", function (event) {
     saveScore()
-}
+});
     //go to high score screen
 
 
@@ -192,4 +186,35 @@ choiceC.addEventListener("click", setChoice);
 choiceD.addEventListener("click", setChoice);
 
 
+//-----------scores page-------------
+var clearbtn = document.getElementById("clearbtn");
+var orderedScore = document.getElementById("highscores");
 
+//display scores to score element
+function displayscores() {
+    var getscores = JSON.parse(window.localStorage.getItem("scores")) || [];
+    getscores.sort(function(a, b) {
+        return a, b;
+      });
+}
+
+getscores.forEach(function (showscore) {
+    var lineItem = document.createElement("li");
+    lineItem.textContent = showscore.initials + " : " + showscore.score;
+
+    orderedScore.appendChild(lineItem);
+});
+
+displayscores ()
+
+
+
+
+
+
+function clearHighscores() {
+    window.localStorage.removeItem("scores");
+    window.location.reload();
+  }
+  
+  clearbtn.onclick = clearHighscores;
