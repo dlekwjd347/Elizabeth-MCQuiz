@@ -1,5 +1,5 @@
 .mainbody {
-    background-image: url(./mew.jpg); 
+    background-image: url(../images/mew.JPG); 
     top: 0; 
     left: 0;
     
@@ -79,7 +79,7 @@ input[type="radio"]  {
   
        
 .scorebody {
-    background-image: url(./mewtwo.JPG); 
+    background-image: url(../images/mewtwo.JPG); 
     margin-left: 130px;
     margin-top: 80px;
 }
