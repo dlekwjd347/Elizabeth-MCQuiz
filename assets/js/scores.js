@@ -16,7 +16,7 @@ function displayscores() {
         orderedScore.appendChild(lineItem);
     });
 
-// displayscores()
+
 }
 
 function clearHighscores() {
@@ -25,3 +25,5 @@ function clearHighscores() {
 }
 
 clearbtn.onclick = clearHighscores;
+
+displayscores()
