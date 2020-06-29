@@ -1,5 +1,5 @@
 .mainbody {
-    background-image: url(../images/mew.JPG); 
+    background-image: url(./images/mew.JPG); 
     top: 0; 
     left: 0;
     
@@ -71,11 +71,6 @@ p, .questions, .result, .end-screen, .highscore  {
 .hide {
     display: none;
 }
-/* 
-input[type="radio"]  {
-    vertical-align: middle;
-} */
-
   
        
 .scorebody {
