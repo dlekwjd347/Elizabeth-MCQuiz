@@ -4,33 +4,20 @@ var orderedScore = document.getElementById("highscores");
 //display scores to score element
 function displayscores() {
     var getscores = JSON.parse(window.localStorage.getItem("scores")) || [];
-    var selectionSort = (scores) => {
-        var scorelength = scores.length;
-        for (var i = 0; i < scorelength; i++) {
-            var min = i;
-            for (var j = i + 1; j < scorelength; j++) {
-                if (scores[min].scorelength > arr[j].scorelength) {
-                    min = j;
-                }
-            }
-            if (min !== i) {
-                let tmp = scores[i];
-                scores[i] = scores[min];
-                scores[min] = tmp;
-            }
-        }
-        return selectionSort;
-    }
+    getscores.sort(function(a, b) {
+        return b.score - a.score;
+      });
+    
 
-    getscores.forEach(function (showscore) {
+    getscores.forEach(function (score) {
         var lineItem = document.createElement("li");
-        lineItem.textContent = showscore.initials + " : " + showscore.score;
+        lineItem.textContent = score.initials + " : " + score.score;
 
         orderedScore.appendChild(lineItem);
     });
-}
 
-displayscores()
+// displayscores()
+}
 
 function clearHighscores() {
     window.localStorage.removeItem("scores");

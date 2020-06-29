@@ -37,7 +37,7 @@ var correctAnswer = "";
 //starting score is 0
 var score = 0;
 //counting down seconds starting from 76, because 75 will show 
-var secondsLeft = 76;
+var secondsLeft = 61;
 
 //function beings when "Start Quiz" button is clicked
 function startButton() {
@@ -59,6 +59,7 @@ function setTime() {
         if (secondsLeft === 0) {
             clearInterval(timerInterval);
             alert("Time's up!");
+            endgame();
         }
     }, 1000);
 }
