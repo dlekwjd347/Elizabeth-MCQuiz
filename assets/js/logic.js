@@ -107,6 +107,7 @@ function validate() {
         score += 1;
         scoreEl.innerHTML = "Score: " + score;
         result.textContent = "You're correct!"
+        result.style.color = 'lightgreen';
     }
 
     else {
@@ -114,6 +115,7 @@ function validate() {
         scoreEl.innerHTML = "Score: " + score;
         secondsLeft -= 5;
         result.textContent = "Sorry, not that one! Time decreased by 5 seconds!"
+        result.style.color = 'red';
 
     }
     setTimeout(function () {
