@@ -52,11 +52,13 @@ function startButton() {
 
 //function to begin the countdown from 76 seconds 
 function setTime() {
+    //start timer with setInterval function
     var timerInterval = setInterval(function () {
         secondsLeft--;
         timeEl.textContent = `Time Remaining: ${secondsLeft} seconds`;
-
+    
         if (secondsLeft === 0) {
+            //clear timer with clearInterval function
             clearInterval(timerInterval);
             alert("Time's up!");
             endgame();
@@ -124,7 +126,7 @@ function validate() {
         } else {
             endgame();
         }
-    },
+    }, //the function will wait 4 seconds when the answer is clicked to go onto the next question 
         4000);
 };
 
@@ -155,7 +157,7 @@ function saveScore() {
             initials: initials
         };
 
-        //appending new scores to array of high scores
+        //adding new scores to array of high scores
         highscores.push(newScore);
         //add high scores to local storage
         window.localStorage.setItem("scores", JSON.stringify(highscores));
